@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="mw_invoce_db" Class="InvoiceLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MACIEK\SQLEXPRESS;Initial Catalog=mw_invoce_db;Integrated Security=True" SettingsObjectName="Invoice_mw.Properties.Settings" SettingsPropertyName="mw_invoce_dbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Invoice" Member="Invoice">
+    <Type Name="Invoice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FA_Number" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Issue_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Due_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Payment_Method" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Subject_From_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Subject_For_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Invoice_Item_in_invoice" Member="Item_in_invoice" ThisKey="Id" OtherKey="Invoice_Id" Type="Item_in_invoice" />
+      <Association Name="Subject_Invoice" Member="Subject" ThisKey="Subject_For_Id" OtherKey="Id" Type="Subject" IsForeignKey="true" />
+      <Association Name="Subject_Invoice1" Member="Subject1" ThisKey="Subject_From_Id" OtherKey="Id" Type="Subject" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Subject" Member="Subject">
+    <Type Name="Subject">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Bank" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Back_Account" Member="Bank_Account" Storage="_Back_Account" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Association Name="Subject_Invoice" Member="Invoice" ThisKey="Id" OtherKey="Subject_For_Id" Type="Invoice" />
+      <Association Name="Subject_Invoice1" Member="Invoice1" ThisKey="Id" OtherKey="Subject_From_Id" Type="Invoice" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Item_in_invoice" Member="Item_in_invoice">
+    <Type Name="Item_in_invoice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Item_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Invoice_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Invoice_Item_in_invoice" Member="Invoice" ThisKey="Invoice_Id" OtherKey="Id" Type="Invoice" IsForeignKey="true" />
+      <Association Name="Item_Item_in_invoice" Member="Item" ThisKey="Item_Id" OtherKey="Id" Type="Item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Item" Member="Item">
+    <Type Name="Item">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Item_Type" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price_Netto" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Item_Item_in_invoice" Member="Item_in_invoice" ThisKey="Id" OtherKey="Item_Id" Type="Item_in_invoice" />
+    </Type>
+  </Table>
+</Database>
