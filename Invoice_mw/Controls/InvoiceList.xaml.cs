@@ -2,6 +2,7 @@
 using Invoice_mw.SQLtoLINQ;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace Invoice_mw.Controls
 
         private void SetGridViewDataSource()
         {
-            var dataSource = (from i1 in dbContext.Invoice
+            var dataSource = from i1 in dbContext.Invoice
                               join s1 in dbContext.Subject on i1.Subject_For_Id equals s1.Id
                               select new
                               {
@@ -68,7 +69,7 @@ namespace Invoice_mw.Controls
                                   i1.Issue_Date,
                                   i1.Due_Date,
                                   i1.Payment_Method
-                              });
+                              };
 
             var updatedDataSource = dataSource.Select(x =>
                        new
@@ -89,9 +90,11 @@ namespace Invoice_mw.Controls
                            Due_Date = ((DateTime)x.Due_Date).ToShortDateString(),
                            Payment_Method = x.Payment_Method
                        });
-
+            
             invoice_grid_view.ItemsSource = updatedDataSource;
         }
+
+        
 
         private void AddInvoice_Click(object sender, RoutedEventArgs e)
         {
@@ -127,6 +130,57 @@ namespace Invoice_mw.Controls
         {
             invoice = invoice.Split(',').First().Split('=').Last();
             return invoice;
+        }
+
+        private void Searchtxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Searchtxt.Text.Equals(""))
+            {
+                SetGridViewDataSource();
+            }
+            else
+            {
+                var dataSource = from i1 in dbContext.Invoice
+                                 join s1 in dbContext.Subject on i1.Subject_For_Id equals s1.Id
+                                 select new
+                                 {
+                                     i1.Id,
+                                     i1.FA_Number,
+                                     s1.Name,
+                                     i1.Issue_Date,
+                                     i1.Due_Date,
+                                     i1.Payment_Method
+                                 };
+
+                var updatedDataSource = dataSource.Select(x =>
+                           new
+                           {
+                               Id = x.Id,
+                               Fa_Number = x.FA_Number,
+                               Subject_For = x.Name,
+
+                               Subject_From = (from i1 in dbContext.Invoice
+                                               join s1 in dbContext.Subject on i1.Subject_From_Id equals s1.Id
+                                               where i1.Id == x.Id
+                                               select new
+                                               {
+                                                   s1.Name
+                                               }).First().Name,
+
+                               Issue_Date = ((DateTime)x.Issue_Date).ToShortDateString(),
+                               Due_Date = ((DateTime)x.Due_Date).ToShortDateString(),
+                               Payment_Method = x.Payment_Method
+                           });
+
+                updatedDataSource = updatedDataSource.Where(i => (i.Fa_Number.Contains(Searchtxt.Text)||
+                                                                  i.Subject_For.Contains(Searchtxt.Text)||
+                                                                  i.Subject_From.Contains(Searchtxt.Text) ||
+                                                                  i.Id.ToString().Contains(Searchtxt.Text) ||
+                                                                  i.Payment_Method.Contains(Searchtxt.Text) ));
+
+                invoice_grid_view.ItemsSource = updatedDataSource;
+
+            }
         }
     }
 }

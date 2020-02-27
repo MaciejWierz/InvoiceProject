@@ -14,7 +14,8 @@ namespace Invoice_mw.DBConn
 
         public DBConn()
         {
-            dbContext = new InvoiceLinqDataContext(Properties.Settings.Default.mw_invoce_dbConnectionString);
+            dbContext = new InvoiceLinqDataContext(
+                Properties.Settings.Default.mw_invoce_dbConnectionString);
         }
     }
 }

@@ -14,11 +14,13 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
 
-
+        <TextBox Name="Searchtxt" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"
+                 Margin="20,10" TextChanged="Searchtxt_TextChanged"></TextBox>
 
 
         <DataGrid Margin="20,20,20,10"  Name="invoice_grid_view"  
@@ -26,16 +28,16 @@
                   SelectionMode="Single" 
                   AutoGeneratingColumn="Invoice_grid_view_AutoGeneratingColumn"
                   Grid.Column="0"
-                  Grid.Row="0"
+                  Grid.Row="1"
                   Grid.ColumnSpan="4"></DataGrid>
 
         <Button Content="Dodaj fakturę" Name="AddInvoice"  Click="AddInvoice_Click"
-                Grid.Column="0" Grid.Row="1" Margin="20,0,0,10"></Button>
+                Grid.Column="0" Grid.Row="2" Margin="20,0,0,10"></Button>
         <Button Content="Usuń fakturę" Name="DeleteInvoice"  Click="DeleteInvoice_Click"
-                Grid.Column="1" Grid.Row="1" Margin="0,0,0,10"></Button>
+                Grid.Column="1" Grid.Row="2" Margin="0,0,0,10"></Button>
         <Button Content="Dodaj podmiot" Name="ToSubjects"  Click="ToSubjects_Click"
-                Grid.Column="2" Grid.Row="1" Margin="0,0,0,10"></Button>
+                Grid.Column="2" Grid.Row="2" Margin="0,0,0,10"></Button>
         <Button Content="Dodaj produkt" Name="ToItems"  Click="ToItems_Click"
-                Grid.Column="3" Grid.Row="1" Margin="0,0,20,10"></Button>
+                Grid.Column="3" Grid.Row="2" Margin="0,0,20,10"></Button>
     </Grid>
 </UserControl>

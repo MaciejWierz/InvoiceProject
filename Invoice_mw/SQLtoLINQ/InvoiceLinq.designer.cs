@@ -439,7 +439,7 @@ namespace Invoice_mw.SQLtoLINQ
 		
 		private string _Bank;
 		
-		private string _Bank_Account;
+		private string _Back_Account;
 		
 		private EntitySet<Invoice> _Invoice;
 		
@@ -570,20 +570,20 @@ namespace Invoice_mw.SQLtoLINQ
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Bank_Account", Storage="_Bank_Account", DbType="VarChar(40)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Back_Account", Storage="_Back_Account", DbType="VarChar(40)")]
 		public string Bank_Account
 		{
 			get
 			{
-				return this._Bank_Account;
+				return this._Back_Account;
 			}
 			set
 			{
-				if ((this._Bank_Account != value))
+				if ((this._Back_Account != value))
 				{
 					this.OnBank_AccountChanging(value);
 					this.SendPropertyChanging();
-					this._Bank_Account = value;
+					this._Back_Account = value;
 					this.SendPropertyChanged("Bank_Account");
 					this.OnBank_AccountChanged();
 				}

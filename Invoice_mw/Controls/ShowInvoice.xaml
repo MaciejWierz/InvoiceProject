@@ -40,7 +40,7 @@
         </Viewbox>
 
         
-        <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="7" Margin="10">
+        <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="7" Margin="10" VerticalAlignment="Top">
             <Viewbox StretchDirection="Both">
             <DataGrid  Name="items_grid_view"  SelectionMode="Single" 
                        AutoGeneratingColumn="Items_grid_view_AutoGeneratingColumn"/>

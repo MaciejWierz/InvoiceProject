@@ -32,6 +32,7 @@ namespace Invoice_mw.Controls
             this.owner = owner;
             InitializeComponent();
             SetComboboxes();
+            SetDataGrid();
             
         }
 
@@ -64,8 +65,14 @@ namespace Invoice_mw.Controls
                             it.value_netto,
                             it.value_brutto
                         };
-
-            items_grid_view.ItemsSource = items;
+            if (items.Count() > 0)
+            {
+                items_grid_view.Visibility = Visibility.Visible;
+                items_grid_view.ItemsSource = items;
+            }else
+            {
+                items_grid_view.Visibility = Visibility.Hidden;
+            }
         }
         private void Items_grid_view_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -123,10 +130,12 @@ namespace Invoice_mw.Controls
                     DBGetSubjects db_subject = new DBGetSubjects();
                     invoice.subject_for = db_subject.GetSubjectByName(SubjectForComboBox.SelectedItem.ToString());
                     invoice.subject_from = db_subject.GetSubjectByName(SubjectFromComboBox.SelectedItem.ToString());
-                    invoice.Issue_Date = DateTime.Parse((Issue_date.Text.Split('/')[1] + "/" + Issue_date.Text.Split('/')[0] + "/" + Issue_date.Text.Split('/')[2]), new CultureInfo("en-CA"));
-                    invoice.Due_Date = DateTime.Parse((Due_date.Text.Split('/')[1] + "/" + Due_date.Text.Split('/')[0] + "/" + Due_date.Text.Split('/')[2]), new CultureInfo("en-CA"));
+                    invoice.issue_date = Convert.ToDateTime((Issue_date.Text.Split('.')[0] + "/" + Issue_date.Text.Split('.')[1] + "/" + Issue_date.Text.Split('.')[2]));
+                    invoice.due_date = Convert.ToDateTime((Due_date.Text.Split('.')[0] + "/" + Due_date.Text.Split('.')[1] + "/" + Due_date.Text.Split('.')[2]));
                     invoice.FA_Number = FA_number.Text;
                     invoice.Payment_Method = Payment_methode.Text;
+
+               
 
                     DBAddInvoice db = new DBAddInvoice();
                     db.AddInvoice(invoice);

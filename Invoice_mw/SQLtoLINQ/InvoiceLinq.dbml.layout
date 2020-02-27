@@ -8,33 +8,33 @@
         <elementListCompartment Id="aae95a2d-c70e-419e-8d0a-91b9da6e13a9" absoluteBounds="3.2649999999999997, 2.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="5eb71181-e9de-4b96-9421-31eafee9b0c1" absoluteBounds="6.75, 2.125, 2, 1.9631982421875">
+    <classShape Id="5eb71181-e9de-4b96-9421-31eafee9b0c1" absoluteBounds="7.75, 2.125, 2, 1.9631982421875">
       <DataClassMoniker Name="/InvoiceLinqDataContext/Subject" />
       <nestedChildShapes>
-        <elementListCompartment Id="8590d331-ad62-4e3a-b682-820df021527b" absoluteBounds="6.7650000000000006, 2.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8590d331-ad62-4e3a-b682-820df021527b" absoluteBounds="7.7650000000000006, 2.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.75 : 2.95274983723958); (5.25 : 2.95274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.75 : 2.95274983723958); (5.25 : 2.95274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/InvoiceLinqDataContext/Subject/Subject_Invoice" />
       <nodes>
         <classShapeMoniker Id="5eb71181-e9de-4b96-9421-31eafee9b0c1" />
         <classShapeMoniker Id="9e8a688f-2587-483a-89fe-2c544fb22f2f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.75 : 2.47637491861979); (5.25 : 2.47637491861979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.75 : 2.47637491861979); (5.25 : 2.47637491861979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/InvoiceLinqDataContext/Subject/Subject_Invoice1" />
       <nodes>
         <classShapeMoniker Id="5eb71181-e9de-4b96-9421-31eafee9b0c1" />
         <classShapeMoniker Id="9e8a688f-2587-483a-89fe-2c544fb22f2f" />
       </nodes>
     </associationConnector>
-    <classShape Id="8034e6c9-8c81-418c-bddd-4469cdf7d807" absoluteBounds="3.875, 4.625, 2, 1.5785953776041666">
+    <classShape Id="8034e6c9-8c81-418c-bddd-4469cdf7d807" absoluteBounds="3.125, 5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/InvoiceLinqDataContext/Item_in_invoice" />
       <nestedChildShapes>
-        <elementListCompartment Id="2f896027-a2f7-4ce7-81fe-e0ce861ea658" absoluteBounds="3.89, 5.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2f896027-a2f7-4ce7-81fe-e0ce861ea658" absoluteBounds="3.14, 5.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.5625 : 3.78049967447917); (4.5625 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.1875 : 3.78049967447917); (4.1875 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/InvoiceLinqDataContext/Invoice/Invoice_Item_in_invoice" />
       <nodes>
         <classShapeMoniker Id="9e8a688f-2587-483a-89fe-2c544fb22f2f" />
@@ -47,7 +47,7 @@
         <elementListCompartment Id="7b225dad-4513-4d72-9165-e965d6c94518" absoluteBounds="7.765, 6.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.75 : 5.91429768880208); (5.875 : 5.91429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.75 : 6.10179768880208); (5.125 : 6.10179768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/InvoiceLinqDataContext/Item/Item_Item_in_invoice" />
       <nodes>
         <classShapeMoniker Id="b9fa36ca-4770-4dbe-ad18-13defd142192" />

@@ -16,5 +16,5 @@ C:\Users\Maciek\source\repos\mw\Invoice_mw\App.xaml
 141111353196
 Controls\AddInvoice.xaml;Controls\AddItem.xaml;Controls\AddSubject.xaml;Controls\EditInvoice.xaml;Controls\InvoiceList.xaml;Controls\ShowInvoice.xaml;MainWindow.xaml;
 
-True
+False
 

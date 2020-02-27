@@ -85,8 +85,15 @@ namespace Invoice_mw.Controls
                           it.value_netto,
                           it.value_brutto
                         };
-
-            items_grid_view.ItemsSource = items;
+            if (items.Count() > 0)
+            {
+                items_grid_view.Visibility = Visibility.Visible;
+                items_grid_view.ItemsSource = items;
+            }
+            else
+            {
+                items_grid_view.Visibility = Visibility.Hidden;
+            }
             double sum_price_netto = 0;
             double sum_price_brutto = 0;
             foreach (ExtendedItem it in invoiceInstance.items)
